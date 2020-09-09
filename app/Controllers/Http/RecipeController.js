@@ -1,6 +1,7 @@
 'use strict'
 
 const Recipe = use('App/Models/Recipe')
+const Step = use('App/Models/Step')
 const { validateAll } = use('Validator')
 
 // const Database = use('Database')
@@ -60,9 +61,14 @@ class RecipeController {
       if (validation.fails())
         return response.status(401).send({ message: validation.messages() })
 
-      const data = request.only(['name', 'description', 'number_servings', 'cooking_time'])
+      const data = request.only(['name', 'description', 'number_servings', 'cooking_time', 'steps'])
+      const steps = data.steps
+      delete data.steps
       const recipe = await Recipe.create({ ...data })
-      return { recipe:  recipe }
+      steps && steps.length && steps.forEach(async step => {
+        await Step.create({ ...step, recipe: recipe.id})
+      });
+      return await Recipe.query().with('steps').where('id', recipe.id).first()
     } catch (error) {
       return response.status(500).send({ error: `${error.message}` })
     }
