@@ -1,4 +1,4 @@
-# Cookbook - dephion (AdonisJS)
+# Cookbook - habitic/dephion (AdonisJS)
 
 ## Prerequisites
 
@@ -30,4 +30,4 @@ adonis migration:run
 ## Further Reading / Useful Links
 
 The API was mapped under POSTMAN, link below:
-`https://documenter.getpostman.com/view/11672383/TVCmQjAG`
+* [`API Docs`] (https://documenter.getpostman.com/view/11672383/TVCmQjAG)
