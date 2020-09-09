@@ -18,6 +18,7 @@ You will need the following things properly installed on your computer.
 ## Setup
 
 1. DATABASE (edit `.env` FILE) (CONFIG database_name, password and username)
+2. Default port (127.0.0.1:3333)
 
 ### Migrations
 
@@ -27,7 +28,13 @@ Run the following command to run startup migrations.
 adonis migration:run
 ```
 
+### RUN App API
+
+```js
+adonis serve
+```
+
 ## Further Reading / Useful Links
 
 The API was mapped under POSTMAN, link below:
-* [APIDocs] (https://documenter.getpostman.com/view/11672383/TVCmQjAG)
+* [`APIDocs`](https://documenter.getpostman.com/view/11672383/TVCmQjAG)
