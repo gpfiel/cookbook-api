@@ -7,8 +7,8 @@ const { validateAll } = use('Validator')
 
 class IngredientController {
   /**
-   * Display a single inrgedient.
-   * GET inrgedients/:id
+   * Display a single ingredient.
+   * GET ingredients/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -17,19 +17,19 @@ class IngredientController {
    */
   async show ({ params, request, response, view }) {
     try {
-      const inrgedient = await Ingredient.query().where('id', params.id).first()
-      if (!inrgedient)
+      const ingredient = await Ingredient.query().where('id', params.id).first()
+      if (!ingredient)
         return response.status(404).send({ error: `Not Found` })
       
-      return { inrgedient:  inrgedient }
+      return { ingredient:  ingredient }
     } catch (error) {
       return response.status(500).send({ error: `${error.message}` })
     }
   }
 
   /**
-   * Show a list of all inrgedients.
-   * GET inrgedients
+   * Show a list of all ingredients.
+   * GET ingredients
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -39,11 +39,11 @@ class IngredientController {
   async index ({ request, response, view }) {
     try {
       const data = request.get()
-      const inrgedients = Ingredient.query()
+      const ingredients = Ingredient.query()
 
-      data.name && inrgedients.where('name', 'LIKE', '%'+data.name+'%')
+      data.name && ingredients.where('name', 'LIKE', '%'+data.name+'%')
 
-      return { inrgedients: await inrgedients.fetch() }
+      return { ingredients: await ingredients.fetch() }
     } catch (error) {
       return response.status(500).send({ error: `${error.message}` })
     }
@@ -59,16 +59,16 @@ class IngredientController {
         return response.status(401).send({ message: validation.messages() })
 
       const data = request.only(['name', 'description'])
-      const inrgedient = await Ingredient.create({ ...data })
-      return { inrgedient:  inrgedient }
+      const ingredient = await Ingredient.create({ ...data })
+      return { ingredient:  ingredient }
     } catch (error) {
       return response.status(500).send({ error: `${error.message}` })
     }
   }
 
   /**
-   * Update inrgedient details.
-   * PUT or PATCH inrgedients/:id
+   * Update ingredient details.
+   * PUT or PATCH ingredients/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -76,9 +76,9 @@ class IngredientController {
    */
   async update ({ params, request, response }) {
     try {
-      const inrgedient = await Ingredient.query().where('id', params.id).first()
+      const ingredient = await Ingredient.query().where('id', params.id).first()
       
-      if (!inrgedient)
+      if (!ingredient)
         return response.status(404).send({ error: `Not Found` })
 
       const validation = await validateAll(request.all(), {
@@ -89,20 +89,20 @@ class IngredientController {
         return response.status(401).send({ message: validation.messages() })
 
       const { name, description } = request.only(['name', 'description'])
-      inrgedient.name = name
-      inrgedient.description = description
+      ingredient.name = name
+      ingredient.description = description
 
-      await inrgedient.save()
+      await ingredient.save()
 
-      return { inrgedient: inrgedient }
+      return { ingredient: ingredient }
     } catch (error) {
       return response.status(500).send({ error: `${error.message}` })
     }
   }
 
   /**
-   * Delete a inrgedient with id.
-   * DELETE inrgedients/:id
+   * Delete a ingredient with id.
+   * DELETE ingredients/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -110,12 +110,12 @@ class IngredientController {
    */
   async destroy ({ params, request, response }) {
     try {
-      const inrgedient = await Ingredient.query().where('id', params.id).first()
+      const ingredient = await Ingredient.query().where('id', params.id).first()
 
-      if (!inrgedient)
+      if (!ingredient)
         return response.status(404).send({ error: `Not Found` })
       
-      await inrgedient.delete()
+      await ingredient.delete()
       return response.status(200).send({})
     } catch (error) {
       return response.status(500).send({ error: `${error.message}` })
