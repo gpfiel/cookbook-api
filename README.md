@@ -30,4 +30,4 @@ adonis migration:run
 ## Further Reading / Useful Links
 
 The API was mapped under POSTMAN, link below:
-* [`API Docs`] (https://documenter.getpostman.com/view/11672383/TVCmQjAG)
+* [APIDocs] (https://documenter.getpostman.com/view/11672383/TVCmQjAG)
