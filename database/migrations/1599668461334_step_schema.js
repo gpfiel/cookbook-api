@@ -10,7 +10,7 @@ class StepSchema extends Schema {
       table.integer('position').notNullable()
       table.string('instructions').defaultTo(null)
       table.string('amount_required').defaultTo(null)
-      table.integer('recipe').unsigned().references('id').inTable('recipes').onUpdate('CASCADE')
+      table.integer('recipe').unsigned().references('id').inTable('recipes').onUpdate('CASCADE').onDelete('CASCADE')
       table.timestamps()
     })
   }

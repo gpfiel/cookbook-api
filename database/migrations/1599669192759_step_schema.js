@@ -6,7 +6,7 @@ const Schema = use('Schema')
 class StepSchema extends Schema {
   up () {
     this.table('steps', (table) => {
-      table.integer('ingredient').unsigned().references('id').inTable('ingredients').onUpdate('CASCADE')
+      table.integer('ingredient').unsigned().references('id').inTable('ingredients').onUpdate('CASCADE').onDelete('CASCADE')
     })
   }
 
