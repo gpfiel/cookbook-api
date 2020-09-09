@@ -17,3 +17,4 @@
 const Route = use('Route')
 
 Route.resource('recipe', 'RecipeController')
+Route.resource('ingredient', 'IngredientController')
