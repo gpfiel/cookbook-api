@@ -68,7 +68,7 @@ class RecipeController {
       steps && steps.length && steps.forEach(async step => {
         await Step.create({ ...step, recipe: recipe.id})
       });
-      return await Recipe.query().with('steps').where('id', recipe.id).first()
+      return { recipe: await Recipe.query().with('steps').where('id', recipe.id).first() }
     } catch (error) {
       return response.status(500).send({ error: `${error.message}` })
     }
