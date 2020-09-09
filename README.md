@@ -1,26 +1,23 @@
-# Adonis fullstack application
+# Cookbook - dephion (AdonisJS)
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+## Prerequisites
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
+You will need the following things properly installed on your computer.
+
+* [Git](https://git-scm.com/)
+* [Node.js](https://nodejs.org/) (with npm)
+* [Adonis CLI](https://www.npmjs.com/package/@adonisjs/cli) (npm i -g @adonisjs/cli)
+* [Database] (Mysql preference)
+
+## Installation
+
+* `git clone https://github.com/gpfiel/cookbook-api.git` this repository
+* `cd cookbook-api`
+* `npm install`
 
 ## Setup
 
-Use the adonis command to install the blueprint
-
-```bash
-adonis new yardstick
-```
-
-or manually clone the repo and then run `npm install`.
-
+1. DATABASE (edit `.env` FILE) (CONFIG database_name, password and username)
 
 ### Migrations
 
@@ -29,3 +26,8 @@ Run the following command to run startup migrations.
 ```js
 adonis migration:run
 ```
+
+## Further Reading / Useful Links
+
+The API was mapped under POSTMAN, link below:
+`https://documenter.getpostman.com/view/11672383/TVCmQjAG`
